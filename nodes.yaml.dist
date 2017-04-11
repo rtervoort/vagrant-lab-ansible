@@ -1,0 +1,20 @@
+---
+- name: elk
+  hostname: elk.vagrant
+  box: centos/7
+  box_check_update: false
+  ip: 192.168.25.140
+  ports:
+    - guest: 22
+      host: 2240
+    - guest: 80
+      host: 8040
+    - guest: 5601
+      host: 5640
+    - guest: 9200
+      host: 9240
+    - guest: 9300
+      host: 9340
+  synced_folders:
+    - src: .
+      dst: /vagrant

@@ -1,0 +1,5 @@
+[elk]
+elk.vagrant
+
+[ansible-host]
+ansible-host.vagrant
