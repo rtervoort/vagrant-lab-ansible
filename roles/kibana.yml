@@ -1,6 +1,0 @@
----
-- name: install the latest version of Kibana
-  yum:
-    name: kibana
-    enabled: true
-    state: latest

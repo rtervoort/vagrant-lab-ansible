@@ -1,5 +1,14 @@
-[elk]
+[elasticsearch]
 elk.vagrant
 
-[ansible-host]
-ansible-host.vagrant
+[kibana]
+elk.vagrant
+
+[logstash]
+elk.vagrant
+
+[apache]
+elk.vagrant
+
+[controlnode]
+controlnode.vagrant

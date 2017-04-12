@@ -1,8 +1,9 @@
 ---
-- name: elk
-  hostname: elk.vagrant
+- name: elk.vagrant
   box: centos/7
   box_check_update: false
+  memory: 2048
+  cpus: 2
   ip: 192.168.25.140
   ports:
     - guest: 22

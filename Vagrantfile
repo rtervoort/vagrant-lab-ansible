@@ -63,46 +63,43 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ###############################################################################
   # VM definitions                                                              #
   ###############################################################################
-  config.vm.define :controlnode do |controlnode|
-    config.vm.provider "virtualbox" do |v|
-      v.memory = 2048
-      v.cpus   = 2
-    end
-    controlnode.vm.host_name = "controlnode.vagrant"
-    controlnode.vm.network :forwarded_port, guest: 22, host: 2230
-    controlnode.vm.network :private_network, ip: "192.168.25.130"
-    #ansible_host.vm.synced_folder '.', "/vagrant"
-    #ansible_host.vm.provision :ansible do |ansible|
-      # TODO ansible provisioning of ansible master
-      # ansible.playbook = "ansible-master.yml"
-    #end
-  end
 
   nodes.each do |node|
     config.vm.define node["name"] do |srv|
+      config.vm.provider "virtualbox" do |v|
+        v.memory = node["memory"]
+        v.cpus   = node["cpus"]
+      end
+
       srv.vm.box                = node["box"]
+      srv.vm.hostname           = node["name"]
+
       if node["box_version"]
         srv.vm.box_version      = node["box_version"]
       end
+
       if node["box_check_update"]
         srv.vm.box_check_update = node["box_check_update"]
       end
-      srv.vm.hostname           = node["hostname"]
+
       if node["ports"]
         node["ports"].each do |port|
           srv.vm.network :forwarded_port, guest: port["guest"], host: port["host"]
         end
       end
+
       srv.vm.network :private_network, ip: node["ip"]
+
       if node["synced_folders"]
         node["synced_folders"].each do |folder|
           srv.vm.synced_folder folder["src"], folder["dst"]
         end
       end
-      #srv.vm.provision :script do |ansible|
-        # TODO ansible provisioning of nodes
-        # ansible.playbook = "playbook.yml"
-      #end
     end
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.inventory_path = "inventory"
   end
 end

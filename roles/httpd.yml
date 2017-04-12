@@ -1,6 +1,0 @@
----
-- name: install the latest version of Apache
-  yum:
-    name: httpd
-    enabled: true
-    state: latest

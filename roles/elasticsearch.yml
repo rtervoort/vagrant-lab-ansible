@@ -1,6 +1,0 @@
----
-- name: install the latest version of ElasticSearch
-  yum:
-    name: elasticsearch
-    enabled: true
-    state: latest
