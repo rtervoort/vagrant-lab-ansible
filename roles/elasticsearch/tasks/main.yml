@@ -1,0 +1,12 @@
+---
+# tasks file for rtervoort.elasticsearch
+
+- name: Install ElasticSearch
+  yum:
+    name: elasticsearch
+    state: latest
+
+- name: Start ElasticSearch
+  service:
+    name: elasticsearch
+    state: started

@@ -1,0 +1,4 @@
+---
+# defaults file for rtervoort.java
+
+java_name: "java-1.8.0-openjdk.x86_64"

@@ -1,0 +1,3 @@
+---
+# defaults file for rtervoort.elastic-repo
+es_major_version: "5.x"

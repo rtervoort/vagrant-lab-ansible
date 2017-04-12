@@ -1,0 +1,12 @@
+---
+# tasks file for rtervoort.kibana
+
+- name: Install Kibana
+  yum:
+    name: kibana
+    state: latest
+
+- name: Start Kibana
+  service:
+    name: kibana
+    state: started
