@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # set to false, if you do NOT want to check the correct VirtualBox Guest Additions version when booting this box
   if defined?(VagrantVbguest::Middleware)
-    config.vbguest.auto_update = false
+    config.vbguest.auto_update = true
   end
 
   ###############################################################################

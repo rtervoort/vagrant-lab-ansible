@@ -1,2 +1,4 @@
 ---
 # defaults file for kibana
+kibana_server_host: localhost
+kibana_es_url: "http://localhost:9200"

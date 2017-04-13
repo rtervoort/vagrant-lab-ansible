@@ -1,0 +1,8 @@
+{% if kibana_server_host %}
+server.host: "{{ kibana_server_host }}"
+{% endif %}
+
+{% if kibana_es_url %}
+elasticsearch.url: "{{ kibana_es_url }}"
+{% endif %}
+

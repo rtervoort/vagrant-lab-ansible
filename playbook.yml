@@ -3,6 +3,8 @@
 # Playbook to install the ELK stack
 #
 - hosts: elasticsearch
+  vars:
+    kibana_server_host: "0.0.0.0"
   roles:
   - java
   - elastic-repo

@@ -5,8 +5,15 @@
   yum:
     name: kibana
     state: latest
+  notify: restart kibana
 
-- name: Start Kibana
-  service:
-    name: kibana
-    state: started
+- name: Configure Kibana
+  template: 
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml 
+    owner: root 
+    group: root
+    mode: 0644 
+    force: yes
+  notify: restart kibana
+

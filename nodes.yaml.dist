@@ -1,5 +1,5 @@
 ---
-- name: elk.vagrant
+- name: elk
   box: centos/7
   box_check_update: false
   memory: 2048
@@ -14,8 +14,6 @@
       host: 5640
     - guest: 9200
       host: 9240
-    - guest: 9300
-      host: 9340
   synced_folders:
     - src: .
       dst: /vagrant

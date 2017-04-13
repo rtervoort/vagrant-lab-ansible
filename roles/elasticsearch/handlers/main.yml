@@ -1,2 +1,9 @@
 ---
 # handlers file for rtervoort.elasticsearch
+
+- name: restart elasticsearch
+  service: 
+    name: elasticsearch 
+    state: restarted 
+    enabled: yes
+

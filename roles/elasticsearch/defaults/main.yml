@@ -1,2 +1,6 @@
 ---
 # defaults file for rtervoort.elasticsearch
+
+es_node_name: "{{ inventory_hostname }}"
+es_cluster_name: elk-lab
+es_network_host: "0.0.0.0"

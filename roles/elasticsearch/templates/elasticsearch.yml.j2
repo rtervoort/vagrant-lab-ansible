@@ -1,0 +1,13 @@
+{% if es_cluster_name %}
+cluster.name: {{ es_cluster_name }}
+{% endif %}
+
+{% if es_network_host %}
+network.host: {{ es_network_host }}
+{% endif %}
+
+{% if es_node_name %}
+node.name: {{ es_node_name }}
+{% endif %}
+
+

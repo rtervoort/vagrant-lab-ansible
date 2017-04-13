@@ -1,14 +1,14 @@
 [elasticsearch]
-elk.vagrant
+elk
 
 [kibana]
-elk.vagrant
+elk
 
 [logstash]
-elk.vagrant
+elk
 
 [apache]
-elk.vagrant
+elk
 
 [controlnode]
-controlnode.vagrant
+controlnode
