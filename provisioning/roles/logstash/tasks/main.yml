@@ -1,0 +1,25 @@
+---
+# tasks file for rtervoort.logstash
+
+- name: Install Logstash
+  yum:
+    name: logstash
+    state: latest
+  notify: restart logstash
+  register: logstash_pkg
+
+- name: Configure Logstash
+  copy:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+    owner: logstash
+    group: logstash
+    mode: 0644
+    force: yes
+  notify: restart logstash
+
+- name: Install Logstash X-Pack plugin
+  command: >
+    /usr/share/logstash/bin/logstash-plugin install x-pack
+  when: logstash_pkg|changed
+  notify: restart logstash

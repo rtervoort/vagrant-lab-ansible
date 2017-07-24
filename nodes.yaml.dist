@@ -2,7 +2,7 @@
 - name: elk
   box: centos/7
   box_check_update: false
-  memory: 2048
+  memory: 4096
   cpus: 2
   ip: 192.168.25.140
   ports:

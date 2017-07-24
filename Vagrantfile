@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # set to false, if you do NOT want to check the correct VirtualBox Guest Additions version when booting this box
   if defined?(VagrantVbguest::Middleware)
-    config.vbguest.auto_update = true
+    config.vbguest.auto_update = false
   end
 
   ###############################################################################
@@ -98,8 +98,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.provision "ansible" do |ansible|
+#  config.vm.provision "ansible" do |ansible|
+#    ansible.playbook = "provisioning/playbook.yml"
+#    ansible.inventory_path = "provisioning/inventory"
+#  end
+
+  config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.inventory_path = "inventory"
+    ansible.provisioning_path = "/vagrant/provisioning"
   end
+
 end

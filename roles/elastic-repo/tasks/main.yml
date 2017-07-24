@@ -1,8 +1,0 @@
----
-# tasks file for rtervoort.elastic-repo
-
-- name: Configure elastic repo
-  template: 
-    src=elasticsearch.repo 
-    dest=/etc/yum.repos.d/elasticsearch-{{ es_major_version }}.repo
-

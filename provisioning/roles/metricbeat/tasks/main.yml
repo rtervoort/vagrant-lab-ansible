@@ -1,0 +1,29 @@
+---
+# tasks file for rtervoort.logstash
+
+- name: Install metricbeat
+  yum:
+    name: metricbeat
+    state: latest
+  notify: restart metricbeat
+  register: metricbeat_pkg
+
+- name: Configure metricbeat
+  copy:
+    src: metricbeat.yml
+    dest: /etc/metricbeat/metricbeat.yml
+    owner: root
+    group: root
+    mode: 0600
+    force: yes
+  notify: restart metricbeat
+
+- name: Load metricbeat ES template
+  command: >
+    curl -H 'Content-Type: application/json' -u elastic:changeme -XPUT 'http://localhost:9200/_template/metricbeat' -d@/etc/metricbeat/metricbeat.template.json
+  when: metricbeat_pkg|changed
+
+- name: Load metricbeat Kibana dashboard
+  command: >
+    /usr/share/metricbeat/scripts/import_dashboards -user elstic -pass changeme
+  when: metricbeat_pkg|changed

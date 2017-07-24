@@ -1,0 +1,25 @@
+---
+# tasks file for rtervoort.kibana
+
+- name: Install Kibana
+  yum:
+    name: kibana
+    state: latest
+  notify: restart kibana
+
+- name: Configure Kibana
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+  notify: restart kibana
+
+- name: Install Kibana X-Pack plugin
+  command: >
+    /usr/share/kibana/bin/kibana-plugin install x-pack
+  args:
+    creates: /usr/share/kibana/plugins/x-pack/LICENSE.txt
+  notify: restart kibana
