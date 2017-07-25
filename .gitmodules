@@ -1,0 +1,3 @@
+[submodule "provisioning/roles/ansible-role-nginx"]
+	path = provisioning/roles/ansible-role-nginx
+	url = https://github.com/geerlingguy/ansible-role-nginx.git

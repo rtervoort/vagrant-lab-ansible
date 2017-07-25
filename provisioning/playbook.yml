@@ -25,4 +25,8 @@
 - hosts: metricbeat
   roles:
   - metricbeat
+
+- hosts: nginx
+  roles:
+  - nginx
 ...
