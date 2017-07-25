@@ -15,5 +15,5 @@ elk
 [metricbeat]
 elk
 
-[metricbeat]
-nginx
+[nginx]
+elk
