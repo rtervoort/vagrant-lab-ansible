@@ -4,8 +4,7 @@
 - name: Install Logstash
   yum:
     name: logstash
-    state: latest
-  notify: restart logstash
+    state: installed
   register: logstash_pkg
 
 - name: Configure Logstash
@@ -23,3 +22,9 @@
     /usr/share/logstash/bin/logstash-plugin install x-pack
   when: logstash_pkg|changed
   notify: restart logstash
+
+- name: Logstash service
+  service:
+    name: logstash
+    state: started
+    enabled: true

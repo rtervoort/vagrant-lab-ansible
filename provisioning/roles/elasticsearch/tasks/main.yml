@@ -1,11 +1,10 @@
 ---
 # tasks file for rtervoort.elasticsearch
 
-- name: Install ElasticSearch
+- name: Install ElasticSearch package
   yum:
     name: elasticsearch
-    state: latest
-  notify: restart elasticsearch
+    state: installed
 
 - name: Configure ElasticSearch
   template:
@@ -23,3 +22,9 @@
   args:
     creates: /usr/share/elasticsearch/plugins/x-pack/LICENSE.txt
   notify: restart elasticsearch
+
+- name: ElasticSearch service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: true

@@ -4,9 +4,8 @@
 - name: Install metricbeat
   yum:
     name: metricbeat
-    state: latest
+    state: installed
   notify: restart metricbeat
-  register: metricbeat_pkg
 
 - name: Configure metricbeat
   copy:
@@ -21,9 +20,13 @@
 - name: Load metricbeat ES template
   command: >
     curl -H 'Content-Type: application/json' -u elastic:changeme -XPOST 'http://localhost:9200/_template/metricbeat' -d@/etc/metricbeat/metricbeat.template.json
-  when: metricbeat_pkg|changed
 
 - name: Load metricbeat Kibana dashboard
   command: >
     /usr/share/metricbeat/scripts/import_dashboards -user elastic -pass changeme
-  when: metricbeat_pkg|changed
+
+- name: Metricbeat service
+  service:
+    name: metricbeat
+    state: started
+    enabled: true

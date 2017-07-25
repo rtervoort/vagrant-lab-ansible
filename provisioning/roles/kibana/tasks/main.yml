@@ -4,8 +4,7 @@
 - name: Install Kibana
   yum:
     name: kibana
-    state: latest
-  notify: restart kibana
+    state: installed
 
 - name: Configure Kibana
   template:
@@ -23,3 +22,9 @@
   args:
     creates: /usr/share/kibana/plugins/x-pack/LICENSE.txt
   notify: restart kibana
+
+- name: Kibana service
+  service:
+    name: kibana
+    state: started
+    enabled: true
