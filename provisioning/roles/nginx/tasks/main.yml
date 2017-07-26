@@ -1,0 +1,23 @@
+---
+# tasks file for rtervoort.logstash
+
+- name: Install nginx package
+  yum:
+    name: nginx
+    state: installed
+
+- name: Configure nginx vhost
+  copy:
+    src: kibana.conf
+    dest: /etc/nginx/conf.d/kibana.conf
+    owner: root
+    group: root
+    mode: 0644
+    force: yes
+  notify: restart nginx
+
+- name: Make sure nginx is started
+  service:
+    name: nginx
+    state: started
+    enabled: true
