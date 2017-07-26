@@ -1,19 +1,4 @@
 elk ansible_connection=local
 
-[repo]
-elk
-
-[elasticsearch]
-elk
-
-[logstash]
-elk
-
-[kibana]
-elk
-
-[metricbeat]
-elk
-
-[nginx]
+[elk]
 elk

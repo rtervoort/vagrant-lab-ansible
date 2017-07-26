@@ -2,31 +2,16 @@
 #
 # Playbook to install the ELK stack
 #
-- hosts: repo
-  roles:
-  - elastic-repo
-
-- hosts: elasticsearch
-  roles:
-  - java
-  - elasticsearch
-
-- hosts: logstash
-  roles:
-  - java
-  - logstash
-
-- hosts: kibana
+- hosts: elk
   vars:
     kibana_server_host: "0.0.0.0"
   roles:
+  - elastic-repo
+  - java
+  - elasticsearch
+  - logstash
   - kibana
-
-- hosts: metricbeat
-  roles:
   - metricbeat
-
-- hosts: nginx
-  roles:
   - nginx
+    
 ...
