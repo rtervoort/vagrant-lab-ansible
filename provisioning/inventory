@@ -1,4 +1,4 @@
 elk ansible_connection=local
 
-[elk]
+[complete_stack]
 elk

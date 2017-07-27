@@ -2,7 +2,7 @@
 #
 # Playbook to install the ELK stack
 #
-- hosts: elk
+- hosts: complete_stack
   vars:
     kibana_server_host: "0.0.0.0"
   roles:
@@ -13,5 +13,5 @@
   - kibana
   - metricbeat
   - nginx
-    
+
 ...
