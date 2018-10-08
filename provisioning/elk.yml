@@ -2,7 +2,7 @@
 #
 # Playbook to install the ELK stack
 #
-- hosts: complete_stack
+- hosts: elk
   vars:
     kibana_server_host: "0.0.0.0"
   roles:

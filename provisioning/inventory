@@ -1,4 +1,4 @@
-elk ansible_connection=local
+lab1 ansible_connection=local
 
-[complete_stack]
-elk
+[elk]
+lab1

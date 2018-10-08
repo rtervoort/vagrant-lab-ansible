@@ -1,5 +1,5 @@
 ---
-- name: elk
+- name: lab1
   box: centos/7
   box_check_update: false
   memory: 4096
